@@ -25,8 +25,7 @@ export function createPasteCrawler(item: Element, timestamp: string, baseUrl: st
             const targetDir = await generateOutputFolder(timestamp);
 
             generateFile(paste, targetDir);
-            await sendToMongoDB(paste);
-
+            return await sendToMongoDB(paste);
         });
 }
 
@@ -41,7 +40,6 @@ export function createPasteBinParentCrawler(baseUrl: string) {
             const pasteCrawler = createPasteCrawler(item, timestamp, baseUrl);
             promiseArr.push(pasteCrawler.run()); // collect all crawlers to run in parallel
         }
-        await Promise.allSettled(promiseArr);
-
+        return await Promise.allSettled(promiseArr);
     });
 }
