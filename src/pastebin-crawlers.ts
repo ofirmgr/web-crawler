@@ -1,6 +1,6 @@
 import * as cheerio from "cheerio";
 import {Element} from "cheerio";
-import {WebCrawler} from "./web-crawler";
+import {WebCrawler} from "./lib/web-crawler";
 import {extractPasteDetails} from "./utils/extract-utils";
 import {Paste} from "./Interfaces/Paste";
 import moment from "moment-timezone";
